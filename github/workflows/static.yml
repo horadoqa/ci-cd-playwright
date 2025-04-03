@@ -1,0 +1,46 @@
+name: Run Playwright tests and Deploy to Pages
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "Playwright-tests"
+  cancel-in-progress: false
+
+jobs:
+  Playwright-tests-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Passo 1: Checkout do código
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # Passo 4: Rodar os testes do Playwright
+      - name: Run Playwright tests
+        run: |  
+          npm install
+          npx playwright install-deps
+          npx playwright test --reporter=html
+          
+      # Passo 5: Configurar Pages
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      # Passo 6: Fazer upload dos arquivos necessários para o GitHub Pages
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './site'  # Aqui você envia o diretório que contém seus arquivos estáticos (HTML, CSS, JS)
+
+      # Passo 7: Fazer deploy para o GitHub Pages
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
