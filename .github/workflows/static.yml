@@ -32,7 +32,7 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-      
+
       - name: Instalação do Node.js
         uses: actions/setup-node@v3
         with:
@@ -40,10 +40,19 @@ jobs:
           cache: 'npm'
           cache-dependency-path: package-lock.json
 
-      - name: Testando o site com playwright
-        uses: ms-playwright/playwright-github-action@v2
+      - name: Instalar dependências
+        run: npm ci
+
+      - name: Instalar navegadores do Playwright
+        run: npx playwright install --with-deps
+
+      - name: Testando o site com Playwright
+        run: npx playwright test --project=chromium --reporter=html
+
+      - name: Subir artefatos de relatórios de testes
+        uses: actions/upload-artifact@v4
+        if: ${{ !cancelled() }}
         with:
-          headless: true
-          script: |
-            npx playwright tests --config=tests/playwright.config.ts --headed --project=chromium --reporter=html
-            npx playwright show-report
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 30
