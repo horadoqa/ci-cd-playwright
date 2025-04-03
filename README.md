@@ -1,4 +1,4 @@
-# Documentação do Projeto: Página de Login
+# [![Testando Página de Login com Playwright via CI/CD](https://readme-typing-svg.demolab.com?font=Fira+Code&pause=1000&width=435&lines=Testando+P%C3%A1gina+de+Login+com+Playwright+via+CI%2FCD)](https://git.io/typing-svg)
 
 ## 1. **Criar Repositório para o Projeto**
 
