@@ -1,5 +1,14 @@
 # [![Testando Página de Login com Playwright via CI/CD](https://readme-typing-svg.demolab.com?font=Fira+Code&pause=1000&width=435&lines=Testando+P%C3%A1gina+de+Login+com+Playwright+via+CI%2FCD)](https://git.io/typing-svg)
 
+
+## Configurando CI
+
+https://playwright.dev/docs/ci-intro#setting-up-github-actions
+
+
+
+
+
 ## 1. **Criar Repositório para o Projeto**
 
 O primeiro passo é criar um repositório no GitHub para armazenar o código-fonte e a estrutura do projeto.
