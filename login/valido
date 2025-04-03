@@ -1,0 +1,11 @@
+const { test, expect } = require('@playwright/test');
+
+test('Login com credenciais válidas', async ({ page }) => {
+
+  await page.goto('https://horadoqa.github.io/ci-cd-playwright/');
+  await expect(page).toHaveTitle(/Hora do QA/);
+  await page.fill('#username', 'usuario@example.com');
+  await page.fill('#password2', '1q2w3e4r');
+  await page.click('#button');
+
+});
