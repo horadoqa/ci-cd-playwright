@@ -1,4 +1,3 @@
-
 name: Deploy static content to Pages and Test with Playwright
 
 on:
@@ -40,13 +39,6 @@ jobs:
           node-version: '18'
           cache: 'npm'
           cache-dependency-path: package-lock.json
-      
-      - name: Instalação do Playwright
-        run: |
-          npm install -D playwright
-          npx playwright install chromium
-          npx playwright install firefox
-          npx playwright install webkit
 
       - name: Testando o site com playwright
         uses: ms-playwright/playwright-github-action@v1
