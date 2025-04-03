@@ -41,7 +41,7 @@ jobs:
           cache-dependency-path: package-lock.json
 
       - name: Testando o site com playwright
-        uses: ms-playwright/playwright-github-action@v1
+        uses: ms-playwright/playwright-github-action@v2
         with:
           headless: true
           script: |
