@@ -1,216 +1,68 @@
-# [![Testando Página de Login com Playwright via CI/CD](https://readme-typing-svg.demolab.com?font=Fira+Code&pause=1000&width=435&lines=Testando+P%C3%A1gina+de+Login+com+Playwright+via+CI%2FCD)](https://git.io/typing-svg)
-
-
-## Configurando CI
-
-https://playwright.dev/docs/ci-intro#setting-up-github-actions
-
-
-
-
-
-## 1. **Criar Repositório para o Projeto**
-
-O primeiro passo é criar um repositório no GitHub para armazenar o código-fonte e a estrutura do projeto.
-
-### Passos:
-- Acesse o GitHub e crie um novo repositório.
-- Dê um nome ao repositório (ex: `login-page`).
-- Escolha a visibilidade (público ou privado).
-- Selecione a opção para criar o repositório com um arquivo `README.md` (opcional).
-- Crie o repositório e copie a URL para realizar o clone.
-
-### Comando para clonar:
-```bash
-git clone https://github.com/seu-usuario/login-page.git
-```
-
----
-
-## 2. **Criar o Esboço da Página de Login**
-
-A página de login é composta por dois formulários principais: **Cadastro** e **Login**. O esboço inicial da página pode ser feito com HTML básico e deve incluir:
-- Inputs para email, senha, e nome (para cadastro).
-- Links para redes sociais (Facebook, Google, LinkedIn).
-- Botões de ação para "Sign Up" e "Sign In".
-- Estilização simples para o layout da página.
-
-### Exemplo de esboço:
+# [![Testando Página de Login com Playwright via CI/CD](https://readme-typing-svg.demolab.com?font=Fira+Code&pause=1000&width=470&lines=Testando+P%C3%A1gina+de+Login+com+Playwright+via+CI%2FCD)](https://git.io/typing-svg)
 
 <div align="center">
-    <img src="./images/login.png">
+   <img src="./images/cicd.png">
 </div>
 
----
+Esses são os **8 passos do ciclo de vida do CI/CD** de acordo com a metodologia **DevOps**, que inclui as etapas principais de planejamento até a medição de resultados. Cada uma dessas fases desempenha um papel importante na criação, implantação e monitoramento de software de forma contínua. Vou explicar cada uma delas:
 
-## 3. **Criar os Requisitos**
+1. **Plan (Planejar)**:
+   - **Objetivo**: Definir o que será desenvolvido, quais funcionalidades ou correções são necessárias e como o desenvolvimento será abordado.
+   - **Atividades**: Durante essa fase, as equipes de desenvolvimento e de operações planejam o que precisa ser feito, definem prioridades, e estabelecem o escopo do trabalho. É aqui que o planejamento do projeto, as histórias de usuário e as tarefas são discutidos.
 
-Os requisitos podem ser encontrados no link do Google Sheets fornecido: [Requisitos do Projeto](https://docs.google.com/spreadsheets/d/1sBozhmf2DiyuuFpKVSNXGExuf7cqiDg6zzc33_MyJ_4/edit?gid=0#gid=0).
+   <div align="center">
+      <img src="./images/login.png">
+   </div>
 
-- **Objetivo:** Certificar-se de que os requisitos do projeto estão claramente documentados para garantir que todas as funcionalidades da página sejam implementadas.
-- **Ações:** Crie uma tabela com os requisitos funcionais, como:
-  - Validação de campos (email e senha).
-  - Login e cadastro com dados válidos/invalidos.
-  - Exibição de mensagens de erro.
-  - Funcionalidade de visualização de senha.
+2. **Code (Codificar)**:
+   - **Objetivo**: Escrever o código da aplicação ou realizar modificações necessárias para implementar as funcionalidades planejadas.
+   - **Atividades**: Desenvolvedores escrevem o código para novas funcionalidades, correções de bugs ou melhorias. O código é versionado usando sistemas de controle, como Git, para manter o histórico e permitir colaboração eficiente.
 
----
+   [Código](./site/)
 
-## 4. **Criar a Branch `html`**
+3. **Build (Construir)**:
+   - **Objetivo**: Compilar o código e preparar o ambiente para testes.
+   - **Atividades**: O código é compilado e as dependências são resolvidas, criando um artefato executável ou pacote. O processo de *build* também inclui a execução de testes automáticos, como testes unitários, para garantir que o código não quebre o sistema.
 
-Crie uma branch específica para o desenvolvimento da estrutura HTML da página.
+   Utilizando o Live Server
 
-### Passos:
-```bash
-git checkout -b html
-```
+4. **Test (Testar)**:
+   - **Objetivo**: Garantir que o código funcione conforme o esperado e que não introduza bugs no sistema.
+   - **Atividades**: Durante essa fase, são realizados testes automatizados, como testes de integração, testes de regressão e testes de aceitação. O código é validado em várias condições para garantir que ele funcione corretamente.
 
-Nessa branch, você vai realizar as modificações no arquivo HTML e submeter as mudanças para o repositório.
+   > Executando o teste local
 
----
+   Validando os borwsers `chromium`, `webkit` e `firefox`
 
-## 5. **Criar a Branch `css`**
+      ```bash
+      npx playwright test
+      ```
 
-Crie uma branch para a parte de estilização do projeto.
+   Definindo um Browser
 
-### Passos:
-```bash
-git checkout -b css
-```
+      ```bash
+      npx playwright test --project=chromium
+      ```
 
-Essa branch será responsável pela criação do arquivo `styles.css` e adição de estilização à página de login.
+5. **Release (Liberar)**:
+   - **Objetivo**: Preparar o código para ser implantado em ambientes de produção.
+   - **Atividades**: A liberação é o processo de empacotar o código final, criando versões estáveis que estarão prontas para implantação. Durante essa fase, a equipe pode preparar o código para ser promovido para o ambiente de produção ou testes finais, como testes de aceitação do usuário (UAT).
 
----
+6. **Deploy (Implantar)**:
+   - **Objetivo**: Colocar o código em produção para que os usuários possam acessá-lo.
+   - **Atividades**: A aplicação é implantada no ambiente de produção, onde será usada pelos clientes ou usuários finais. Essa implantação pode ser feita de forma manual ou automatizada, com a utilização de pipelines CI/CD, dependendo da estratégia de deploy adotada pela equipe.
 
-## 6. **Criar a Branch `js`**
+   > Utilizando o Github Pages: [https://horadoqa.github.io/ci-cd-playwright/](https://horadoqa.github.io/ci-cd-playwright/)
 
-Crie uma branch para a implementação da lógica de JavaScript da página.
+7. **Operate (Operar)**:
+   - **Objetivo**: Garantir que o sistema esteja funcionando de forma eficiente e monitorada após a implantação.
+   - **Atividades**: Nessa fase, a aplicação é monitorada para detectar falhas, erros ou problemas de desempenho. Ferramentas de monitoramento e logs são usadas para garantir que o sistema opere corretamente em produção. A equipe de operações mantém o sistema em funcionamento e realiza ajustes conforme necessário.
 
-### Passos:
-```bash
-git checkout -b js
-```
+   Utilizando o Github Actions
 
-Nessa branch, você vai implementar as interações da página de login, como validação de campos, manipulação de erros, e exibição de mensagens.
+8. **Measure (Medir)**:
+   - **Objetivo**: Avaliar o desempenho da aplicação e do processo de desenvolvimento para melhorar continuamente.
+   - **Atividades**: Coletar métricas de desempenho, como tempo de resposta, taxa de erros e satisfação do usuário. Além disso, a equipe coleta dados sobre a eficiência do processo CI/CD, como tempo de implantação, taxa de falhas de testes e tempo para corrigir bugs. Com essas informações, as equipes podem fazer melhorias no ciclo de vida do software.
 
----
-
-## 7. **Criar a Branch do Framework**
-
-Se o projeto utilizar algum framework, como **Bootstrap** ou **Tailwind CSS**, crie uma branch dedicada para a configuração e integração do framework.
-
-### Passos:
-```bash
-git checkout -b framework
-```
-
-Esse framework será utilizado para melhorar a estrutura visual e responsiva da página.
-
----
-
-## 8. **Instalação da Ferramenta de Testes**
-
-Instale o **Cypress** (ou outra ferramenta de testes que você preferir) para automatizar os testes da página.
-
-### Passos:
-```bash
-npm install cypress --save-dev
-```
-
-A instalação do Cypress permitirá rodar testes automatizados para garantir que as funcionalidades da página de login funcionem corretamente.
-
----
-
-## 9. **Criar os Cenários de Teste**
-
-Com base nos requisitos, crie os cenários de teste para validar as funcionalidades. Alguns exemplos de cenários podem ser:
-
-- **Cenário 1:** Teste de Login com credenciais válidas.
-- **Cenário 2:** Teste de Login com email inválido.
-- **Cenário 3:** Teste de Login com senha incorreta.
-- **Cenário 4:** Teste de Login com campos vazios.
-- **Cenário 5:** Teste de Login com email e senha vazios.
-
-### Exemplo de teste Playwright (Login com credenciais válidas):
-
-```javascript
-test('5 - Ambos Válidos', async () => {
-    const browser = await webkit.launch();  // Lançar WebKit
-    const page = await browser.newPage();   // Criar uma nova página
-    await page.goto('https://horadoqa.github.io/login/');
-    await expect(page).toHaveTitle(/Hora do QA/);
-
-    // Preenche os campos do formulário
-    await page.fill('#username', 'usuario@example.com');
-    await page.fill('#password', '1q2w3e4r');
-    
-    // Clica no botão "Entrar"
-    await page.click('button:has-text("Entrar")');
-    
-    // Clica no link do YouTube
-    await page.click('a.youtube-button');
-    
-    // Verifica a URL do YouTube
-    await expect(page).toHaveURL('https://www.youtube.com/@horadoqa');
-
-    await browser.close();  // Fecha o navegador após o teste
-});
-```
-
----
-
-## 11. **Deployar a Página no GitHub Pages**
-
-Depois de validar que a página está funcionando corretamente, faça o deploy da página no GitHub Pages.
-
-### Passos:
-1. Crie a branch `gh-pages`:
-   ```bash
-   git checkout -b gh-pages
-   ```
-2. Faça o deploy com a ação `GitHub Pages` no fluxo de CI/CD.
-
----
-
-## 12. **Criar os Testes Automatizados com Cypress**
-
-Implemente testes automatizados no Cypress para validar funcionalidades como:
-
-- **Validação de campos**.
-- **Testes de login/cadastro**.
-- **Erros ao enviar formulários incompletos**.
-- **Mensagens de erro visíveis**.
-
-Os testes serão executados de forma automática sempre que houver alterações no código.
-
----
-
-## 13. **Validar os Resultados**
-
-Após rodar os testes, valide se todos os cenários de teste passaram. Se algum teste falhar, faça ajustes no código até que todos os testes sejam bem-sucedidos.
-
----
-
-## 14. **Criar o CI/CD**
-
-Para automatizar o processo de deploy e testes, crie um arquivo de configuração do GitHub Actions (`.github/workflows/ci.yml`).
-
-### Exemplo de configuração para CI/CD:
-
-```yaml
-
-```
-
----
-
-## 15. **Preparar Apresentação do Projeto (1h)**
-
-A apresentação do projeto deve incluir os seguintes tópicos:
-- **Objetivo do Projeto**: Explicar o propósito da página de login.
-- **Tecnologias Usadas**: Descrever as tecnologias utilizadas (HTML, CSS, JS, Cypress, GitHub Pages).
-- **Testes Realizados**: Apresentar os testes criados e os cenários cobertos.
-- **Demonstração**: Mostrar o funcionamento do sistema com base nos requisitos.
-- **CI/CD**: Explicar o processo automatizado de testes e deploy com GitHub Actions.
-
---- 
+Esses oito passos refletem um ciclo contínuo de desenvolvimento, onde a medição e os feedbacks ajudam a aprimorar as etapas anteriores, resultando em um processo de entrega mais rápido, seguro e eficiente.
 
